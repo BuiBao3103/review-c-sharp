@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Donvi">
+          <Key>
+            <PropertyRef Name="Madv" />
+          </Key>
+          <Property Name="Madv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tendv" Type="nvarchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loaithietbi">
+          <Key>
+            <PropertyRef Name="Maloai" />
+          </Key>
+          <Property Name="Maloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tenloai" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Thietbi">
+          <Key>
+            <PropertyRef Name="Matb" />
+          </Key>
+          <Property Name="Madv" Type="int" />
+          <Property Name="Maloai" Type="int" />
+          <Property Name="Matb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tentb" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Nuocsx" Type="nvarchar" MaxLength="30" />
+          <Property Name="Namsx" Type="int" />
+          <Property Name="Ngaysd" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Thietbi__Madv__3B75D760">
+          <End Role="Donvi" Type="Self.Donvi" Multiplicity="0..1" />
+          <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donvi">
+              <PropertyRef Name="Madv" />
+            </Principal>
+            <Dependent Role="Thietbi">
+              <PropertyRef Name="Madv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Thietbi__Maloai__3C69FB99">
+          <End Role="Loaithietbi" Type="Self.Loaithietbi" Multiplicity="0..1" />
+          <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loaithietbi">
+              <PropertyRef Name="Maloai" />
+            </Principal>
+            <Dependent Role="Thietbi">
+              <PropertyRef Name="Maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTBStoreContainer">
+          <EntitySet Name="Donvi" EntityType="Self.Donvi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loaithietbi" EntityType="Self.Loaithietbi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thietbi" EntityType="Self.Thietbi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Thietbi__Madv__3B75D760" Association="Self.FK__Thietbi__Madv__3B75D760">
+            <End Role="Donvi" EntitySet="Donvi" />
+            <End Role="Thietbi" EntitySet="Thietbi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Thietbi__Maloai__3C69FB99" Association="Self.FK__Thietbi__Maloai__3C69FB99">
+            <End Role="Loaithietbi" EntitySet="Loaithietbi" />
+            <End Role="Thietbi" EntitySet="Thietbi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Donvi">
+          <Key>
+            <PropertyRef Name="Madv" />
+          </Key>
+          <Property Name="Madv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tendv" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Thietbis" Relationship="Self.FK__Thietbi__Madv__3B75D760" FromRole="Donvi" ToRole="Thietbi" />
+        </EntityType>
+        <EntityType Name="Loaithietbi">
+          <Key>
+            <PropertyRef Name="Maloai" />
+          </Key>
+          <Property Name="Maloai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tenloai" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Thietbis" Relationship="Self.FK__Thietbi__Maloai__3C69FB99" FromRole="Loaithietbi" ToRole="Thietbi" />
+        </EntityType>
+        <EntityType Name="Thietbi">
+          <Key>
+            <PropertyRef Name="Matb" />
+          </Key>
+          <Property Name="Madv" Type="Int32" />
+          <Property Name="Maloai" Type="Int32" />
+          <Property Name="Matb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tentb" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nuocsx" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Namsx" Type="Int32" />
+          <Property Name="Ngaysd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Donvi" Relationship="Self.FK__Thietbi__Madv__3B75D760" FromRole="Thietbi" ToRole="Donvi" />
+          <NavigationProperty Name="Loaithietbi" Relationship="Self.FK__Thietbi__Maloai__3C69FB99" FromRole="Thietbi" ToRole="Loaithietbi" />
+        </EntityType>
+        <Association Name="FK__Thietbi__Madv__3B75D760">
+          <End Role="Donvi" Type="Self.Donvi" Multiplicity="0..1" />
+          <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donvi">
+              <PropertyRef Name="Madv" />
+            </Principal>
+            <Dependent Role="Thietbi">
+              <PropertyRef Name="Madv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Thietbi__Maloai__3C69FB99">
+          <End Role="Loaithietbi" Type="Self.Loaithietbi" Multiplicity="0..1" />
+          <End Role="Thietbi" Type="Self.Thietbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loaithietbi">
+              <PropertyRef Name="Maloai" />
+            </Principal>
+            <Dependent Role="Thietbi">
+              <PropertyRef Name="Maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="qlthietbiEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Donvis" EntityType="Self.Donvi" />
+          <EntitySet Name="Loaithietbis" EntityType="Self.Loaithietbi" />
+          <EntitySet Name="Thietbis" EntityType="Self.Thietbi" />
+          <AssociationSet Name="FK__Thietbi__Madv__3B75D760" Association="Self.FK__Thietbi__Madv__3B75D760">
+            <End Role="Donvi" EntitySet="Donvis" />
+            <End Role="Thietbi" EntitySet="Thietbis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Thietbi__Maloai__3C69FB99" Association="Self.FK__Thietbi__Maloai__3C69FB99">
+            <End Role="Loaithietbi" EntitySet="Loaithietbis" />
+            <End Role="Thietbi" EntitySet="Thietbis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTBStoreContainer" CdmEntityContainer="qlthietbiEntities1">
+          <EntitySetMapping Name="Donvis">
+            <EntityTypeMapping TypeName="QLTB.Donvi">
+              <MappingFragment StoreEntitySet="Donvi">
+                <ScalarProperty Name="Madv" ColumnName="Madv" />
+                <ScalarProperty Name="Tendv" ColumnName="Tendv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loaithietbis">
+            <EntityTypeMapping TypeName="QLTB.Loaithietbi">
+              <MappingFragment StoreEntitySet="Loaithietbi">
+                <ScalarProperty Name="Maloai" ColumnName="Maloai" />
+                <ScalarProperty Name="Tenloai" ColumnName="Tenloai" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thietbis">
+            <EntityTypeMapping TypeName="QLTB.Thietbi">
+              <MappingFragment StoreEntitySet="Thietbi">
+                <ScalarProperty Name="Madv" ColumnName="Madv" />
+                <ScalarProperty Name="Maloai" ColumnName="Maloai" />
+                <ScalarProperty Name="Matb" ColumnName="Matb" />
+                <ScalarProperty Name="Tentb" ColumnName="Tentb" />
+                <ScalarProperty Name="Nuocsx" ColumnName="Nuocsx" />
+                <ScalarProperty Name="Namsx" ColumnName="Namsx" />
+                <ScalarProperty Name="Ngaysd" ColumnName="Ngaysd" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
