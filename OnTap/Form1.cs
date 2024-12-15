@@ -20,30 +20,28 @@ namespace OnTap
                     adapter.Fill(dataTable);
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error " + ex.Number.ToString());
-
+                MessageBox.Show(ex.Message, "Error");
             }
             return dataTable;
         }
 
         public int ExecuteNonQuery(string sSql)
         {
-
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            try
             {
-                connection.Open();
-                SqlCommand mySqlCommand = new SqlCommand(sSql, connection);
-                try
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
+                    connection.Open();
+                    SqlCommand mySqlCommand = new SqlCommand(sSql, connection);
                     return mySqlCommand.ExecuteNonQuery();
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error " + ex.Number.ToString());
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error " + ex.Number.ToString());
 
-                }
             }
             return 0;
         }
@@ -67,11 +65,12 @@ namespace OnTap
             cbLoaiThietBi.DataSource = dataCbLoaiThietBi;
             cbLoaiThietBi.DisplayMember = "Tenloai";
             cbLoaiThietBi.ValueMember = "Maloai";
+            
 
             // Lấy dữ liệu từ bảng LoaiThietBi
             string queryLoaiThietBi = "SELECT * FROM LoaiThietBi";
             DataTable dataTableLoaiThietBi = GetData(queryLoaiThietBi);
-            tblLoatThietBi.DataSource = dataTableLoaiThietBi;
+            dgvLoatThietBi.DataSource = dataTableLoaiThietBi;
 
             // Lấy dữ liệu từ nhiều bảng ThietBi
             string queryThietBi =

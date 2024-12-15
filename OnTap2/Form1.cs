@@ -34,7 +34,7 @@ namespace OnTap2
                                    {
                                        ltb.Maloai,
                                        ltb.Tenloai,
-                                       ltb.Ghichu
+                                       ltb.Ghichu,
                                    };
             dgvLoaiThietBi.DataSource = queryLoaiThietBi.ToList();
 
@@ -155,13 +155,11 @@ namespace OnTap2
         private void btnTimKiemTheoDonVi_Click(object sender, EventArgs e)
         {
             int maDv = Convert.ToInt32(cbDonViTBTimKiem.SelectedValue);
-            var query = from dv in _db.Donvis
-                        join tb in _db.Thietbis on dv.Madv equals tb.Madv
+            var query = from tb in _db.Thietbis
                         join ltb in _db.Loaithietbis on tb.Maloai equals ltb.Maloai
-                        where dv.Madv == maDv
+                        where tb.Madv == maDv
                         select new
                         {
-                            dv.Tendv,
                             ltb.Tenloai,
                             tb.Tentb,
                             tb.Nuocsx,

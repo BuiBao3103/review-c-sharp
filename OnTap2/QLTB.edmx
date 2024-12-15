@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLTB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="qlthietbiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Donvi">
           <Key>
             <PropertyRef Name="Madv" />
@@ -57,7 +57,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLTBStoreContainer">
+        <EntityContainer Name="qlthietbiModelStoreContainer">
           <EntitySet Name="Donvi" EntityType="Self.Donvi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Loaithietbi" EntityType="Self.Loaithietbi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Thietbi" EntityType="Self.Thietbi" Schema="dbo" store:Type="Tables" />
@@ -74,7 +74,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLTB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="qlthietbiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Donvi">
           <Key>
             <PropertyRef Name="Madv" />
@@ -131,7 +131,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="qlthietbiEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLTB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Donvis" EntityType="Self.Donvi" />
           <EntitySet Name="Loaithietbis" EntityType="Self.Loaithietbi" />
           <EntitySet Name="Thietbis" EntityType="Self.Thietbi" />
@@ -149,9 +149,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLTBStoreContainer" CdmEntityContainer="qlthietbiEntities1">
+        <EntityContainerMapping StorageEntityContainer="qlthietbiModelStoreContainer" CdmEntityContainer="QLTB">
           <EntitySetMapping Name="Donvis">
-            <EntityTypeMapping TypeName="QLTB.Donvi">
+            <EntityTypeMapping TypeName="qlthietbiModel.Donvi">
               <MappingFragment StoreEntitySet="Donvi">
                 <ScalarProperty Name="Madv" ColumnName="Madv" />
                 <ScalarProperty Name="Tendv" ColumnName="Tendv" />
@@ -159,7 +159,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Loaithietbis">
-            <EntityTypeMapping TypeName="QLTB.Loaithietbi">
+            <EntityTypeMapping TypeName="qlthietbiModel.Loaithietbi">
               <MappingFragment StoreEntitySet="Loaithietbi">
                 <ScalarProperty Name="Maloai" ColumnName="Maloai" />
                 <ScalarProperty Name="Tenloai" ColumnName="Tenloai" />
@@ -168,7 +168,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Thietbis">
-            <EntityTypeMapping TypeName="QLTB.Thietbi">
+            <EntityTypeMapping TypeName="qlthietbiModel.Thietbi">
               <MappingFragment StoreEntitySet="Thietbi">
                 <ScalarProperty Name="Madv" ColumnName="Madv" />
                 <ScalarProperty Name="Maloai" ColumnName="Maloai" />

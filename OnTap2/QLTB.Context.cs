@@ -13,10 +13,10 @@ namespace OnTap2
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class qlthietbiEntities : DbContext
+    public partial class QLTB : DbContext
     {
-        public qlthietbiEntities()
-            : base("name=qlthietbiEntities")
+        public QLTB()
+            : base("name=QLTB")
         {
         }
     
