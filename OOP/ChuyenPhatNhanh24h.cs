@@ -32,10 +32,10 @@ namespace OOP
             }
             double tienCuoc = 20000 + soKG * 2000 + phiVuotKho;
 
-            return tienCuoc + PhiDamBao(tienCuoc);
+            return tienCuoc + TinhPhiDamBao(tienCuoc);
         }
 
-        public double PhiDamBao(double tienCuoc)
+        public double TinhPhiDamBao(double tienCuoc)
         {
             return tienCuoc * 0.1;
         }

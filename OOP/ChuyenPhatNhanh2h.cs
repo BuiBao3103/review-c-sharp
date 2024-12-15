@@ -12,6 +12,14 @@ namespace OOP
 
         public int KhoangCach { get => khoangCach; set => khoangCach = value; }
 
+        public ChuyenPhatNhanh2h() : base()
+        {
+        }
+
+        public ChuyenPhatNhanh2h(string maVanDon, string tenNguoiGui, string diaChiNG, string tenNguoiNhan, string diaChiNN, DateTime ngayGui, string tuyen, double soKG, int khoangCach) : base(maVanDon, tenNguoiGui, diaChiNG, tenNguoiNhan, diaChiNN, ngayGui, tuyen, soKG)
+        {
+            KhoangCach = khoangCach;
+        }
         public override double TinhTienCuoc()
         {
             double tienCuoc = 23000;
@@ -19,10 +27,10 @@ namespace OOP
             {
                 tienCuoc = 23000 + (khoangCach - 4) * 4000;
             }
-            return tienCuoc + PhiDamBao(tienCuoc);
+            return tienCuoc + TinhPhiDamBao(tienCuoc);
         }
 
-        public double PhiDamBao(double tienCuoc)
+        public double TinhPhiDamBao(double tienCuoc)
         {
             return tienCuoc * 0.15;
         }

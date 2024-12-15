@@ -12,7 +12,6 @@ namespace OOP
 
         public int SoLanGui { get => soLanGui; set => soLanGui = value; }
 
-
         public ChuyenPhatThuong() : base()
         {
         }

@@ -15,7 +15,7 @@
         //Cau 2
         public string MaVanDon
         {
-            get => maVanDon;
+            get { return maVanDon; }
             set
             {
                 if (value.Length != 7
@@ -31,7 +31,7 @@
         //Cau 3
         public double SoKG
         {
-            get => soKG;
+            get { return soKG; }
             set
             {
                 if (value < 0)

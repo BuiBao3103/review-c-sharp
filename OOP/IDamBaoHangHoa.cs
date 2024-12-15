@@ -8,6 +8,6 @@ namespace OOP
 {
     internal interface IDamBaoHangHoa
     {
-        public double PhiDamBao(double tienCuoc);
+        public double TinhPhiDamBao(double tienCuoc);
     }
 }
